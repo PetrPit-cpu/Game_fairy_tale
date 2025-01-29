@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    margin: 40px 0 80px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.icon-1 {
+    max-width: 120px;
+    width: 100%;
+    min-height: 60px;
+}
+
+.icon {
+    max-width: 96px;
+    width: 100%;
+    min-height: 96px;
+}
+
+.instrument, .target {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* вертикальное выравнивание */
+    justify-content: center; /* горизонтальное выравнивание */
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #eef;
+    border: 1px solid #66f;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Добавляем небольшой тень */
+    text-align: center; /* Центрируем текст */
+    font-size: 16px;
+    cursor: pointer; /* Указатель мыши для взаимодействия */
+}
+
+.column {
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.list, .targets {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+
+.target-s {
+    display: flex;
+    flex-direction: column;
+}
+
+.target {
+    background-color: #ffe;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+}
+
+.target.correct {
+    background-color: #cfc;
+    border-color: #080;
+    color: #080;
+}
+
+/* ----- Медиазапросы ----- */
+/* Для 4K (3840px) */
+@media (min-width: 2560px) {
+    .container {
+        margin: 0 300px;
+    }
+
+    .instrument, .target {
+        width: 250px; /* Увеличиваем карточки для 4K */
+        height: 250px;
+        font-size: 18px;
+    }
+
+    h1 {
+        font-size: 32px; /* Увеличиваем шрифт заголовка */
+    }
+}
+
+/* Для Full HD (1920px) */
+@media (max-width: 1920px) {
+    .container {
+        margin: 0 150px; /* Умеренные отступы */
+    }
+
+    .instrument, .target {
+        width: 200px; /* Умеренный размер карточек */
+        height: 200px;
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 28px; /* Уменьшаем шрифт заголовка */
+    }
+}
+
+/* Для разрешения 1440px */
+@media (max-width: 1440px) {
+    .container {
+        margin: 0 100px; /* Сужаем отступы */
+    }
+
+    .instrument, .target {
+        width: 160px; /* Уменьшаем карточки для 1440px */
+        height: 160px;
+        font-size: 14px; /* Размер текста пропорционально уменьшается */
+    }
+
+    h1 {
+        font-size: 24px; /* Ещё меньше шрифт заголовка */
+    }
+}

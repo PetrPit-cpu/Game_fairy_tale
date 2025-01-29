@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Игра Теремок</title>
+  <style>
+    /* Основной стиль для страницы */
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-image: url('images/фон теремок.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      background-color: #f0f8ff;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Стиль теремка */
+    .house {
+      position: absolute;
+      top: 0px;
+      width: 1000px;
+      height: 600px;
+      left: 250px;
+      background-image: url('images/теремок нов.png');
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Общий стиль для животных */
+    .animal {
+      position: absolute;
+      display: flex;
+      cursor: grab;
+      user-select: none;
+    }
+
+    /* Стиль для изображения животных (уменьшение их в три раза) */
+    .animal img {
+      width: 22%;
+      height: auto;
+    }
+
+    /* Начальное позиционирование каждого животного */
+    .animal[data-name="mouse"] {
+      top: 10px;
+      left: 0px;
+    }
+
+    .animal[data-name="wolf"] {
+      top: 130px;
+      left: 0px;
+    }
+
+    .animal[data-name="owl"] {
+      top: 300px;
+      left: 0px;
+    }
+
+    .animal[data-name="bear"] {
+      top: 420px;
+      left: 0px;
+    }
+
+    .animal[data-name="frog"] {
+      top: 10px;
+      left: 120px;
+    }
+
+    .animal[data-name="fox"] {
+      top: 180px;
+      left: 120px;
+    }
+
+    .animal[data-name="hare"] {
+      top: 400px;
+      left: 120px;
+    }
+
+    .retry-button {
+      position: absolute;
+      right: 5%;
+      top: 5%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: #f0f8ff;
+      border: 2px solid #3a3a3a;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .retry-button:hover {
+      background-color: #ddd;
+    }
+
+    .next-game-link {
+    position: fixed;
+    right: 20px; /* Позиция от правого края */
+    bottom: 20px; /* Позиция от нижнего края */
+    padding: 15px 30px; /* Внутренние отступы */
+    background-color: #4CAF50; /* Зеленый фон */
+    color: white; /* Цвет текста */
+    text-decoration: none; /* Убираем подчеркивание текста */
+    border-radius: 5px; /* Скругленные углы */
+    font-size: 18px; /* Размер шрифта */
+    text-align: center; /* Текст выравнен по центру */
+    display: inline-block; /* Ссылка ведет себя как кнопка */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень */
+    transition: background-color 0.3s ease; /* Плавный переход фона */
+    }
+
+    .next-game-link:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+    }
+
+    /* Адаптация под экраны с шириной более 3000px */
+    @media (min-width: 1800px) {
+      .house {
+        width: 1553px;
+        height: 800px;
+        left: 300px;
+        top: 10px;
+      }
+
+      .animal {
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Стиль для изображения животных (уменьшение их в три раза) */
+      .animal img {
+        width: 30%;
+        height: auto;
+      }
+
+      /* Начальное позиционирование каждого животного */
+      .animal[data-name="mouse"] {
+        top: 10px;
+        left: 0px;
+      }
+
+      .animal[data-name="wolf"] {
+        top: 180px;
+        left: 0px;
+      }
+
+      .animal[data-name="owl"] {
+        top: 400px;
+        left: 0px;
+      }
+
+      .animal[data-name="bear"] {
+        top: 550px;
+        left: 0px;
+      }
+
+      .animal[data-name="frog"] {
+        top: 10px;
+        left: 170px;
+      }
+
+      .animal[data-name="fox"] {
+        top: 180px;
+        left: 170px;
+      }
+
+      .animal[data-name="hare"] {
+        top: 400px;
+        left: 220px;
+      }
+    }
+
+    /* Адаптация под экраны с шириной более 3000px */
+    @media (min-width: 3000px) {
+      .house {
+        left: 700px;
+        width: 3107px;
+        height: 2198px;
+        top: 10px;
+      }
+
+      .animal {
+        align-items: center;
+        justify-content: center;
+      }
+
+      .animal img {
+        width: 100%;
+        height: auto;
+      }
+
+      .animal[data-name="mouse"] {
+        top: 10px;
+        left: 0px;
+      }
+
+      .animal[data-name="wolf"] {
+        top: 500px;
+        left: 0px;
+      }
+
+      .animal[data-name="owl"] {
+        top: 1200px;
+        left: 0px;
+      }
+
+      .animal[data-name="bear"] {
+        top: 1700px;
+        left: 0px;
+      }
+
+      .animal[data-name="frog"] {
+        top: 10px;
+        left: 370px;
+      }
+
+      .animal[data-name="fox"] {
+        top: 500px;
+        left: 370px;
+      }
+
+      .animal[data-name="hare"] {
+        top: 1200px;
+        left: 370px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- Теремок -->
+    <div class="house" id="house"></div>
+    <!-- Животные -->
+    <div class="animal" data-name="mouse" draggable="true">
+      <img src="images/мыш.png" alt="Мышь">
+    </div>
+    <div class="animal" data-name="wolf" draggable="true">
+      <img src="images/волк.png" alt="Волк">
+    </div>
+    <div class="animal" data-name="owl" draggable="true">
+      <img src="images/сова(не в теремке).png" alt="Сова">
+    </div>
+    <div class="animal" data-name="bear" draggable="true">
+      <img src="images/медведь.png" alt="Медведь">
+    </div>
+    <div class="animal" data-name="frog" draggable="true">
+      <img src="images/лягушка.png" alt="Лягушка">
+    </div>
+    <div class="animal" data-name="fox" draggable="true">
+      <img src="images/лиса.png" alt="Лиса">
+    </div>
+    <div class="animal" data-name="hare" draggable="true">
+      <img src="images/заяц.png" alt="Заяц">
+    </div>
+    <button class="retry-button" onclick="resetGame()">Заново</button>
+    <a href="./вторая-страница/index-2.html" class="next-game-link">Следующая игра</a>
+  </div>
+
+  <script>
+    // Получение списка всех животных и элемента теремка по айди
+    const animals = document.querySelectorAll('.animal');
+    const house = document.getElementById('house');
+    // Позиции животных в теремке для экранов больше 3000px
+    const positionMoreThan3000 = {
+      mouse: { left: 600, top: 1640 },
+      wolf: { left: 2154, top: 1596 },
+      frog: { left: 374, top: 1670 },
+      fox: { left: 2481, top: 1567 },
+      hare: { left: 1450, top: 1000 },
+      bear: { left: 1769, top: 35 }
+    }
+    // Позиции животных в теремке для экранов меньше 3000px и больше 1800px
+    const positionMoreThan1800 = {
+      mouse: { left: 340, top: 612 },
+      wolf: { left: 915, top: 612 },
+      frog: { left: 254, top: 623 },
+      fox: { left: 1028, top: 600 },
+      hare: { left: 676, top: 376 },
+      bear: { left: 689, top: 35 }
+    };
+    // Позиции животных в теремке для экранов меньше 1800px
+    const positionLess1800 = {
+      mouse: { left: 233, top: 469 },
+      wolf: { left: 700, top: 474 },
+      frog: { left: 170, top: 474 },
+      fox: { left: 774, top: 474 },
+      hare: { left: 480, top: 300 },
+      bear: { left: 646, top: 95 }
+    };
+
+    // Изображения животных внутри теремка
+    const imagesInHouse = {
+      mouse: 'images/мыш в теремке.png',
+      wolf: 'images/волк в теремке.png',
+      bear: 'images/медведь в теремке.png',
+      frog: 'images/лягушка в теремке.png',
+      fox: 'images/лиса в теремке.png',
+      hare: 'images/заяц в теремке.png'
+    };
+
+    // Установка начальных позиций в зависимости от размера экрана
+    let positions;
+    if (window.innerWidth > 3000) {
+      positions = positionMoreThan3000;
+    } else if (window.innerWidth > 1800) {
+      positions = positionMoreThan1800;
+    } else {
+      positions = positionLess1800;
+    }
+
+    // Обновление позиций при изменении размера окна
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 3000) {
+        positions = positionMoreThan3000;
+      } else if (window.innerWidth > 1800) {
+        positions = positionMoreThan1800;
+      } else {
+        positions = positionLess1800;
+      }
+    });
+
+    // Добавление события перетаскивания для каждого животного
+    animals.forEach(animal => {
+      animal.addEventListener('dragstart', e => {
+        // Сохраняем имя животного в dataTransfer, чтобы использовать его при отпускании
+        e.dataTransfer.setData('animal', e.target.parentNode.dataset.name);
+      });
+    });
+    // Разрешение перетаскивания над теремком
+    house.addEventListener('dragover', e => {
+      e.preventDefault();
+    });
+    // Обработка события отпускания животного в теремке
+    house.addEventListener('drop', e => {
+      // Получаем имя перетаскиваемого животного
+      const animalName = e.dataTransfer.getData('animal');
+      // Находим элемент животного
+      const draggedAnimal = document.querySelector(`.animal[data-name="${animalName}"]`);
+      // Проверяем, является ли животное допустимым для добавления в теремок
+      if (checkAnimal(animalName)) {
+        // Размещаем животное в теремке
+        placeAnimalInHouse(animalName, draggedAnimal);
+      } else {
+        alert("Животное не подходит");
+        // Если животное недопустимо, возвращаем его на исходное место
+        resetAnimal(draggedAnimal);
+      }
+    });
+    // Проверяет, может ли данное животное быть добавлено в теремок
+    function checkAnimal(name) {
+      const validAnimals = ['mouse', 'wolf', 'bear', 'frog', 'fox', 'hare'];
+      return validAnimals.includes(name);
+    }
+    // Размещение животного в теремке
+    function placeAnimalInHouse(name, animal) {
+      if (positions[name]) {
+        // Фиксируем позицию животного
+        animal.style.position = 'absolute';
+        // Задаём горизонтальное положение
+        animal.style.left = `${positions[name].left}px`;
+        // Задаём вертикальное положение
+        animal.style.top = `${positions[name].top}px`;
+        const img = animal.querySelector('img');
+        // Меняем изображение на то, которое должно быть "в теремке"
+        img.src = imagesInHouse[name];
+        // Добавляем животное внутрь дома
+        house.appendChild(animal);
+      }
+    }
+    // Сброс позиции животного, если оно не попало в теремок
+    function resetAnimal(animal) {
+      animal.style.top = '';
+      animal.style.left = '';
+    }
+    function resetGame() {
+      location.reload(); // Перезагрузка страницы
+    }
+
+  </script>
+
+</body>
+
+</html>

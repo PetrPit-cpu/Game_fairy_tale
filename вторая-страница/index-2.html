@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игра на распределение</title>
+    <link rel="stylesheet" href="./css/style-2.css">
+</head>
+<body>
+    <h1>Распредели инструменты!</h1>
+    <div class="container">
+
+        <!-- Левая часть с 5 парами -->
+        <div class="column">
+            <div class="targets">
+                <div class="target target-s" data-target="Теремок">
+                    <img src="./img/теремок нов.png" alt="Теремок" class="icon">
+                    Теремок</div>
+                <div class="target target-s" data-target="Стук">
+                    <img src="./img/стук.png" alt="Стук" class="icon">
+                    Стук</div>
+                <div class="target target-s" data-target="Мышь">
+                    <img src="./img/мыш.png" alt="Мышь" class="icon">
+                    Мышь</div>
+                <div class="target target-s" data-target="Лягушка">
+                    <img src="./img/лягушка.png" alt="Лягушка" class="icon">
+                    Лягушка</div>
+                <div class="target target-s" data-target="Заяц">
+                    <img src="./img/заяц.png" alt="Заяц" class="icon">
+                    Заяц</div>
+            </div>
+            <div class="list" id="instruments-list">
+                <div class="instrument" draggable="true" data-answer="Теремок">
+                    <img src="./img/ксилофон.png" alt="Ксилофон" class="icon">
+                    Ксилофон
+                </div>
+                <div class="instrument" draggable="true" data-answer="Стук">
+                    <img src="./img/ложки.png" alt="Ложки" class="icon-1">
+                    Ложки
+                </div>
+                <div class="instrument" draggable="true" data-answer="Мышь">
+                    <img src="./img/колокольчик.png" alt="Колокольчик" class="icon">
+                    Колокольчик
+                </div>
+                <div class="instrument" draggable="true" data-answer="Лягушка">
+                    <img src="./img/трещетка.png" alt="Трещотка" class="icon">
+                    Трещотка
+                </div>
+                <div class="instrument" draggable="true" data-answer="Заяц">
+                    <img src="./img/бубен.png" alt="Бубен" class="icon">
+                    Бубен
+                </div>
+            </div>
+        </div>
+
+        <!-- Правая часть с 5 парами -->
+        <div class="column">
+            <div class="targets">
+                <div class="target" data-target="Лиса">
+                    <img src="./img/лиса.png" alt="Лиса" class="icon">
+                    Лиса</div>
+                <div class="target" data-target="Волк">
+                    <img src="./img/волк.png" alt="Волк" class="icon">
+                    Волк</div>
+                <div class="target" data-target="Медведь">
+                    <img src="./img/медведь.png" alt="Медведь" class="icon">
+                    Медведь</div>
+                <div class="target" data-target="Песни">
+                    <img src="./img/песни.png" alt="Песни" class="icon">
+                    Песни</div>
+                <div class="target" data-target="Пилить">
+                    <img src="./img/пилить.png" alt="Пилить" class="icon">
+                    Пилить</div>
+            </div>
+            <div class="list" id="instruments-list-random">
+                <div class="instrument" draggable="true" data-answer="Лиса">
+                    <img src="./img/пакет.png" alt="Пакет" class="icon">
+                    Пакет</div>
+                <div class="instrument" draggable="true" data-answer="Волк">
+                    <img src="./img/маракасы.png" alt="Маракасы" class="icon">
+                    Маракасы</div>
+                <div class="instrument" draggable="true" data-answer="Медведь">
+                    <img src="./img/барабан.png" alt="Барабан" class="icon">
+                    Барабан</div>
+                <div class="instrument" draggable="true" data-answer="Песни">
+                    <img src="./img/свистулька.png" alt="Свистулька" class="icon">
+                    Свистулька</div>
+                <div class="instrument" draggable="true" data-answer="Пилить">
+                    <img src="./img/расчестка.png" alt="Расческа" class="icon">
+                    Расческа</div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
